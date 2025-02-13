@@ -1,0 +1,106 @@
+console.log('Happy developing ✨');
+
+let start50 = document.getElementById('start50');
+let start25 = document.getElementById('start25');
+let stop = document.getElementById('stop');
+let reset = document.getElementById('reset');
+
+let wMin = document.getElementById('w_minutes');
+let wSec = document.querySelector('.w_seconds');
+
+let bSec = document.querySelector('.b_second');
+let bMin = document.getElementById('b_minutes');
+
+let startTimer;
+let workDuration = 50;  // Default 50 menit
+let breakDuration = 10; // Default 10 menit
+
+function startCountdown(work, rest) {
+    if (startTimer === undefined) {
+        wMin.innerText = work;
+        wSec.innerText = "00";
+        bMin.innerText = rest;
+        bSec.innerText = "00";
+
+        startTimer = setInterval(timer, 1000);
+    } else {
+        alert("Timer is already started!");
+    }
+}
+
+start50.addEventListener('click', () => {
+    workDuration = 50;
+    breakDuration = 10;
+    startCountdown(workDuration, breakDuration);
+});
+
+start25.addEventListener('click', () => {
+    workDuration = 25;
+    breakDuration = 5;
+    startCountdown(workDuration, breakDuration);
+});
+
+stop.addEventListener('click', () => {
+    clearInterval(startTimer);
+    startTimer = undefined;
+});
+
+reset.addEventListener('click', () => {
+    clearInterval(startTimer);
+    startTimer = undefined;
+    wMin.innerText = workDuration; // Kembali ke mode yang dipilih terakhir
+    wSec.innerText = "00";
+    bMin.innerText = breakDuration;
+    bSec.innerText = "00";
+    document.getElementById('counter').innerText = 0;
+});
+
+function timer() {
+    if (parseInt(wSec.innerText) > 0) {
+        wSec.innerText = parseInt(wSec.innerText) - 1;
+    } else if (parseInt(wMin.innerText) > 0) {
+        wSec.innerText = 59;
+        wMin.innerText = parseInt(wMin.innerText) - 1;
+    }
+
+    if (parseInt(wMin.innerText) == 0 && parseInt(wSec.innerText) == 0) {
+        if (parseInt(bSec.innerText) > 0) {
+            bSec.innerText = parseInt(bSec.innerText) - 1;
+        } else if (parseInt(bMin.innerText) > 0) {
+            bSec.innerText = 59;
+            bMin.innerText = parseInt(bMin.innerText) - 1;
+        }
+    }
+
+    if (parseInt(wMin.innerText) == 0 && parseInt(wSec.innerText) == 0 &&
+        parseInt(bMin.innerText) == 0 && parseInt(bSec.innerText) == 0) {
+        wMin.innerText = workDuration;
+        wSec.innerText = "00";
+        bMin.innerText = breakDuration;
+        bSec.innerText = "00";
+        document.getElementById('counter').innerText = parseInt(document.getElementById('counter').innerText) + 1;
+    }
+}
+
+let alarmSound = new Audio('./sound/undertakers-bell_2UwFCIe.mp3');
+
+
+function showNotification(msg) {
+    if (Notification.permission === 'granted') {
+        new Notification('Pomodoro Timer', { body: msg });
+    } else {
+        Notification.requestPermission().then(permission => {
+            if (permission === 'granted') {
+                new Notification('Pomodoro Timer', { body: msg });
+            }
+        });
+    }
+}
+
+function playAlarm() {
+    alarmSound.play();
+    setTimeout(() => {
+        alarmSound.pause();
+        alarmSound.currentTime = 0;
+    }, 15000);
+}

@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Arimo:ital,wght@0,400..700;1,400..700&display=swap" rel="stylesheet">
+    <title>pomodoro Timer</title>
+</head>
+<body>
+        <section class="container">
+            <div class="title">
+            <h1>Pomodoro Timer</h1>
+            <p>lorem ipsum dolor siamet</p>
+            </div>
+            <div class="card-con">
+                <p id="work" class="label">Work :</p>
+                <p id="cycles" class="label">Cycles</p>
+                <p id="break" class="label">Break :</p>
+            </div>
+
+            <div class="card-box">
+                <!--    timer   -->
+                <span class="line"></span>
+                <div id="work-timer" class="timer">
+                    <p id="w_minutes">00</p> <p class="semicolon">:</p> <p class="w_seconds">05</p>
+                </div>
+                <span class="line"></span>
+
+                <p id="counter" class="timer">0</p>
+                <!--            Break time      -->
+                <span class="line"></span>
+
+                <div id="break-timer" class="timer">
+                    <p id="b_minutes">00</p> <p class="semicolon">:</p> <p class="b_second">05</p>
+                </div>
+                <span class="line"></span>
+            </div>
+
+            <div class="card-btn">
+                <button id="start50" class="btn">Start 50min / 10min</button>
+                <button id="start25" class="btn">Start 25min / 5min</button>
+                <button id="stop" class="btn">Stop</button>
+                <button id="reset" class="btn">Reset</button>
+            </div>
+        </section>
+</body>
+<script src="pomodoro.js"></script>
+</html>
