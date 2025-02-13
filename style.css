@@ -1,4 +1,9 @@
-
+:root {
+    --blue-ncs: #0084c1ff;
+    --celestial-blue: #0093d6ff;
+    --celestial-blue-2: #019de6ff;
+    --seasalt: #f9f9f9ff;
+}
 
 * {
     box-sizing: border-box;
@@ -16,8 +21,7 @@ body {
 }
 
 .container {
-    background-color: lightgray;
-
+    background-color: var(--celestial-blue);
     width: 32rem;
     padding: 2rem;
     border-radius: 16px;
@@ -26,11 +30,14 @@ body {
     padding: 12px 0 32px 0;
 }
 .title h1 {
+    color: var(--seasalt);
     text-transform: uppercase;
     font-size: 32px;
     text-align: center;
 }
 .title p {
+    opacity: 75%;
+    color: var(--seasalt);
     font-size: 16px;
     text-align: center;
 }
@@ -38,8 +45,10 @@ body {
     display: flex;
     flex-direction: row;
     justify-content: space-around;
-    background-color: lightgreen;
+    background-color: var(--seasalt);
     padding: 16px;
+    border-radius: 16px;
+    color: var(--blue-ncs);
 }
 .card-con p{
     font-size: 24px;
@@ -57,23 +66,33 @@ body {
     padding: 8px;
 }
 .timer {
-    background-color: lightblue;
+    background-color: var(--celestial-blue-2);
+    border-radius: 16px;
+    padding: 8px;
     display: flex;
+    color: var(--seasalt);
 }
 
 .card-btn {
     display: flex;
     justify-content: space-around;
     padding: 16px;
-    background: beige;
+    border-radius: 8px;
+    background:var(--seasalt);
 }
 .card-btn button {
     border: none;
     padding: 10px;
-    background: orangered;
-    color: white;
+    border-radius: 4px;
+    background: var(--seasalt);
+    color: var(--celestial-blue-2);
+    transition: 1s ease;
+}
+.card-btn button:hover {
+    background-color: var(--blue-ncs);
+    color: var(--seasalt);
 }
 .line {
     width: 3px;
-    background: red;
+    background: var(--seasalt   );
 }
